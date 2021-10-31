@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
+import Head from 'next/head';
 import { useDispatch, useSelector } from 'react-redux';
 import { IconButton, Grid } from '@mui/material';
 import Header from '../components/common/Header/Header';
@@ -31,38 +31,51 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      <Header isContent={false} />
-      <Main>
-        <LaunchesList />
-        <Grid container justifyContent="center">
-          <Grid
-            item
-            xs={12}
-            sm={4}
-            md={3}
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              margin: '30px 0',
-            }}
-          >
-            <IconButton
-              onClick={() => selectPageHandling(6)}
-              className={page === 6 ? classes.buttonSelected : classes.button}
-              disabled={isPending}
+      <Head>
+        <title>Space Land Main Page</title>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <meta
+          name="description"
+          content="Space Land main page of simple example"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div>
+        <Header isContent={false} />
+        <Main>
+          <LaunchesList />
+          <Grid container justifyContent="center">
+            <Grid
+              item
+              xs={12}
+              sm={4}
+              md={3}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                margin: '30px 0',
+              }}
             >
-              01
-            </IconButton>
-            <IconButton
-              onClick={() => selectPageHandling(16)}
-              className={page === 16 ? classes.buttonSelected : classes.button}
-              disabled={isPending}
-            >
-              02
-            </IconButton>
+              <IconButton
+                onClick={() => selectPageHandling(6)}
+                className={page === 6 ? classes.buttonSelected : classes.button}
+                disabled={isPending}
+              >
+                01
+              </IconButton>
+              <IconButton
+                onClick={() => selectPageHandling(16)}
+                className={
+                  page === 16 ? classes.buttonSelected : classes.button
+                }
+                disabled={isPending}
+              >
+                02
+              </IconButton>
+            </Grid>
           </Grid>
-        </Grid>
-      </Main>
+        </Main>
+      </div>
     </div>
   );
 };

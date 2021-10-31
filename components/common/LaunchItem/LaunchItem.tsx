@@ -57,7 +57,7 @@ const LaunchItem: React.FC<Props> = (props) => {
                 {description !== null && description.length
                   ? isContent
                     ? description
-                    : cutText(description, 400)
+                    : cutText(description, 300)
                   : "Description isn't available"}
               </Typography>
             </div>

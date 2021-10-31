@@ -56,6 +56,7 @@ export const useStyles = makeStyles(() => createStyles({
         justifyContent: 'center'
     },
     columnBetween: {
+        height: 460,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
