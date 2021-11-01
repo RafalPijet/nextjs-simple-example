@@ -50,7 +50,7 @@ const SelectMenuItem: React.FC<Props> = (props) => {
   const selectItemHandling = () => {
     dispatch(setLaunch(props.launch));
     if (location.pathname === '/') {
-      setTimeout(() => setIsRedirect(true), 500);
+      setIsRedirect(true);
     }
   };
 

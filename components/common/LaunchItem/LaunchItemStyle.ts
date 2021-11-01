@@ -3,6 +3,14 @@ import { Launch } from '../../../types/global';
 import { secondaryColor } from '../../../styles/globalStyles';
 
 export const useStyles = makeStyles(() => createStyles({
+    main: {
+        "@media (min-width: 320px)": {
+            marginBottom: 50
+        },
+        "@media (min-width: 1200px)": {
+            marginBottom: 0
+        },
+    },
     root: {
         margin: 5,
         padding: 30,
@@ -22,7 +30,7 @@ export const useStyles = makeStyles(() => createStyles({
         backgroundPosition: 'center center',
         backgroundSize: 'cover',
         "@media (min-width: 320px)": {
-            minWidth: 250,
+            minWidth: 220,
             minHeight: 200,
         },
         "@media (min-width: 768px)": {

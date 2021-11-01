@@ -30,11 +30,11 @@ const LaunchItem: React.FC<Props> = (props) => {
 
   const selectItemHandling = () => {
     dispatch(setLaunch(launch));
-    setTimeout(() => setIsRedirect(true), 500);
+    setIsRedirect(true);
   };
 
   return (
-    <Grid item xs={12} sm={12} md={4}>
+    <Grid item xs={12} sm={12} md={4} className={classes.main}>
       <Paper className={rootClasses} elevation={0}>
         <Grid container style={{ height: '100%' }}>
           <Grid item xs={12} sm={12} md={12} className={classes.columnBetween}>

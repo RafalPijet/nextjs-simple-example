@@ -52,7 +52,7 @@ export const useStyles = makeStyles(() => createStyles({
     },
     favoritesButton: {
         "@media (min-width: 320px)": {
-            bottom: '-97vw',
+            bottom: '-86vw',
         },
         "@media (min-width: 414px)": {
             bottom: '-100vw',
@@ -123,13 +123,13 @@ export const useStyles = makeStyles(() => createStyles({
         },
         "@media (min-width: 992px)": {
             right: '-5vw',
-            transformOrigin: '87% 93%',
+            transformOrigin: '87% 95%',
             top: '-12vw',
             width: '50vw',
         },
         "@media (min-width: 1200px)": {
             right: '-15vw',
-            transformOrigin: '40% 5%',
+            transformOrigin: '35% 5%',
             width: '25vw',
             top: 0,
         },
@@ -144,7 +144,7 @@ export const useStyles = makeStyles(() => createStyles({
             backgroundColor: '#fff'
         },
         "@media (min-width: 320px)": {
-            bottom: '-97vw',
+            bottom: '-86vw',
         },
         "@media (min-width: 414px)": {
             bottom: '-100vw',
