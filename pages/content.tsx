@@ -7,14 +7,19 @@ import { Typography, Grid, Button } from '@mui/material';
 import Header from '../components/common/Header/Header';
 import Main from '../components/common/Main/Main';
 import LaunchItem from '../components/common/LaunchItem/LaunchItem';
-import { getSelectedLaunch, setLaunch } from '../redux/actions/launchesActions';
+import { useAppSelector, useAppDispatch } from '../redux/hooks';
+import { setSelectedLaunch } from '../redux/launches/launches-slice';
 import { useStyles } from '../styles/ContentPageStyle';
 
 const ContentPage: NextPage = () => {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const router = useRouter();
-  const selectedLaunch = useSelector(getSelectedLaunch);
+  // const selectedLaunch = useSelector(getSelectedLaunch);
+  const selectedLaunch = useAppSelector(
+    (state) => state.launches.selectedLaunch
+  );
   const [isRedirect, setIsRedirect] = useState<boolean>(false);
   window.scroll(0, 0);
 
@@ -27,7 +32,8 @@ const ContentPage: NextPage = () => {
   const selectItemHandling = () => {
     setTimeout(() => {
       setIsRedirect(true);
-      dispatch(setLaunch(null));
+      // dispatch(setLaunch(null));
+      dispatch(setSelectedLaunch(null));
     }, 500);
   };
 
@@ -38,7 +44,7 @@ const ContentPage: NextPage = () => {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <meta
           name="description"
-          content="pace Land content page of simple example"
+          content="Space Land content page of simple example"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

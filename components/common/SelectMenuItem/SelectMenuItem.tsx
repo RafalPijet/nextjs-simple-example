@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
-import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { MenuItem, Avatar, Typography, IconButton } from '@mui/material';
 import { DeleteForever } from '@mui/icons-material';
-import {
-  setLaunch,
-  getSelectedLaunch,
-} from '../../../redux/actions/launchesActions';
+import { setSelectedLaunch } from '../../../redux/launches/launches-slice';
 import { removeLaunchFromFavorites } from '../../../redux/thunks';
 import emptyImage from '../../../public/noImage.png';
 import { Props, useStyles } from './SelectMenuItemStyle';
@@ -15,9 +12,11 @@ import { Props, useStyles } from './SelectMenuItemStyle';
 const SelectMenuItem: React.FC<Props> = (props) => {
   const { launch, isFavorites } = props;
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const router = useRouter();
-  const selectedLaunch = useSelector(getSelectedLaunch);
+  const selectedLaunch = useAppSelector(
+    (state) => state.launches.selectedLaunch
+  );
   const [isRedirect, setIsRedirect] = useState<boolean>(false);
   const [isHidden, setIsHidden] = useState<boolean>(true);
 
@@ -48,7 +47,7 @@ const SelectMenuItem: React.FC<Props> = (props) => {
   }, [isRedirect]);
 
   const selectItemHandling = () => {
-    dispatch(setLaunch(props.launch));
+    dispatch(setSelectedLaunch(props.launch));
     if (location.pathname === '/') {
       setIsRedirect(true);
     }

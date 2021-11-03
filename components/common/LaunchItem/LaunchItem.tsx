@@ -3,8 +3,9 @@ import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
 import { Paper, Typography, Grid, Button } from '@mui/material';
+import { useAppDispatch } from '../../../redux/hooks';
 import { cutText } from '../../../functions';
-import { setLaunch } from '../../../redux/actions/launchesActions';
+import { setSelectedLaunch } from '../../../redux/launches/launches-slice';
 import { useStyles, Props } from './LaunchItemStyle';
 import noImage from '../../../public/noImage.png';
 
@@ -12,7 +13,7 @@ const LaunchItem: React.FC<Props> = (props) => {
   const { name, date, images, description } = props.launch;
   const { isContent, launch } = props;
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const router = useRouter();
   const dateFormat = new Date(date).toLocaleString();
   const [isRedirect, setIsRedirect] = useState<boolean>(false);
@@ -22,6 +23,11 @@ const LaunchItem: React.FC<Props> = (props) => {
     [classes.settingHeight]: !isContent,
   });
 
+  const contentClasses = classNames({
+    [classes.columnBetween]: true,
+    [classes.setHeight]: !isContent,
+  });
+
   useEffect(() => {
     if (isRedirect) {
       router.push('/content');
@@ -29,7 +35,7 @@ const LaunchItem: React.FC<Props> = (props) => {
   }, [isRedirect]);
 
   const selectItemHandling = () => {
-    dispatch(setLaunch(launch));
+    dispatch(setSelectedLaunch(launch));
     setIsRedirect(true);
   };
 
@@ -37,7 +43,7 @@ const LaunchItem: React.FC<Props> = (props) => {
     <Grid item xs={12} sm={12} md={4} className={classes.main}>
       <Paper className={rootClasses} elevation={0}>
         <Grid container style={{ height: '100%' }}>
-          <Grid item xs={12} sm={12} md={12} className={classes.columnBetween}>
+          <Grid item xs={12} sm={12} md={12} className={contentClasses}>
             <div>
               <div
                 className={classes.imageBox}

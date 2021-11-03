@@ -12,3 +12,7 @@ export const useStyles = makeStyles(() => createStyles({
         color: secondaryColor
     },
 }))
+
+export interface Props {
+    isPending: boolean;
+}

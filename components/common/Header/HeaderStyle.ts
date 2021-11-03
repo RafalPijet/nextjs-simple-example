@@ -171,4 +171,5 @@ export const useStyles = makeStyles(() => createStyles({
 
 export interface Props {
     isContent: boolean;
+    isPending?: boolean;
 }

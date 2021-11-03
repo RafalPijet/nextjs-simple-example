@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { useRouter } from 'next/router';
-import { useSelector, useDispatch } from 'react-redux';
 import {
   Grid,
   FilledInput,
@@ -16,28 +15,25 @@ import {
 } from '@mui/material';
 import { Search, Add, FavoriteBorder } from '@mui/icons-material';
 import SelectMenuItem from '../SelectMenuItem/SelectMenuItem';
-import { getPending } from '../../../redux/actions/requestActions';
-import {
-  getLaunches,
-  getFavoriteLaunches,
-  getSelectedLaunch,
-} from '../../../redux/actions/launchesActions';
 import {
   addLaunchToFavorites,
   getFavoritesLaunchesFromLocalStorage,
 } from '../../../redux/thunks';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { loadLaunches } from '../../../redux/launches/launches-slice';
 import { useStyles, Props } from './HeaderStyle';
 import { Launch } from '../../../types/global';
 
 const Header: React.FC<Props> = (props) => {
-  const { isContent } = props;
+  const { isContent, isPending } = props;
   const classes = useStyles();
   const location = useRouter();
-  const dispatch = useDispatch();
-  const isPending = useSelector(getPending);
-  const launches = useSelector(getLaunches);
-  const favorites = useSelector(getFavoriteLaunches);
-  const selectedLaunch = useSelector(getSelectedLaunch);
+  const dispatch = useAppDispatch();
+  const launches = useAppSelector((state) => state.launches.launches);
+  const favorites = useAppSelector((state) => state.launches.favoriteLaunches);
+  const selectedLaunch = useAppSelector(
+    (state) => state.launches.selectedLaunch
+  );
   const [isSearch, setIsSearch] = useState<boolean>(false);
   const [isFavoritesOpen, setIsFavoritesOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

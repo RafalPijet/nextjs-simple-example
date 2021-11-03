@@ -1,29 +1,18 @@
-import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
-import thunk from 'redux-thunk';
-import requestReducer from './reducers/requestReducer';
-import launchesReducer from './reducers/launchesReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import launchesReducer from './launches/launches-slice';
+import errorsSlice from './errors/errors-slice';
+import { launchesApiSlice } from './launches/launches-api-slice';
 
-const rootReducer = combineReducers({
-    request: requestReducer,
-    launches: launchesReducer
-});
-
-export type RootState = ReturnType<typeof rootReducer>
-
-declare global {
-    interface Window {
-        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+export const store = configureStore({
+    reducer: {
+        errors: errorsSlice,
+        launches: launchesReducer,
+        [launchesApiSlice.reducerPath]: launchesApiSlice.reducer
+    },
+    middleware: (getDefaultMiddleware) => {
+        return getDefaultMiddleware().concat(launchesApiSlice.middleware)
     }
-}
+})
 
-let composeEnhancers = compose;
-if (typeof window !== 'undefined') {
-    composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-}
-
-const store = createStore(rootReducer, compose(
-    applyMiddleware(thunk),
-    composeEnhancers && composeEnhancers()
-));
-
-export default store;
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>

@@ -11,3 +11,8 @@ export interface Launch {
     date: string;
     images: Ship[];
 }
+
+export enum AvailableToastVariant {
+    error = 'error',
+    info = 'info'
+}

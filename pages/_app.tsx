@@ -8,7 +8,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import theme from '../theme';
 import createEmotionCache from '../createEmotionCache';
-import store from '../redux/store';
+import { store } from '../redux/store';
 import '../styles/styles.css';
 const clientSideEmotionCache = createEmotionCache();
 
@@ -33,7 +33,7 @@ const MyApp = (props: MyAppProps) => {
     <CacheProvider value={emotionCache}>
       <Provider store={store}>
         <SnackbarProvider
-          maxSnack={3}
+          maxSnack={6}
           anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'right',

@@ -1,16 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Grid, CircularProgress } from '@mui/material';
 import LaunchItem from '../../common/LaunchItem/LaunchItem';
-import { getLaunches } from '../../../redux/actions/launchesActions';
-import { getPending } from '../../../redux/actions/requestActions';
+import { useAppSelector } from '../../../redux/hooks';
 import { Launch } from '../../../types/global';
-import { useStyles } from './LaunchesListStyle';
+import { useStyles, Props } from './LaunchesListStyle';
 
-const LaunchesList: React.FC = () => {
+const LaunchesList: React.FC<Props> = (props) => {
+  const { isPending } = props;
   const classes = useStyles();
-  const isPending = useSelector(getPending);
-  const launches = useSelector(getLaunches);
+  const launches = useAppSelector((state) => state.launches.launches);
 
   return (
     <Grid container className={classes.root}>
