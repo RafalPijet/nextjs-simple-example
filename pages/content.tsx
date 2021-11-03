@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { Typography, Grid, Button } from '@mui/material';
 import Header from '../components/common/Header/Header';
@@ -13,10 +12,8 @@ import { useStyles } from '../styles/ContentPageStyle';
 
 const ContentPage: NextPage = () => {
   const classes = useStyles();
-  // const dispatch = useDispatch();
   const dispatch = useAppDispatch();
   const router = useRouter();
-  // const selectedLaunch = useSelector(getSelectedLaunch);
   const selectedLaunch = useAppSelector(
     (state) => state.launches.selectedLaunch
   );
@@ -32,7 +29,6 @@ const ContentPage: NextPage = () => {
   const selectItemHandling = () => {
     setTimeout(() => {
       setIsRedirect(true);
-      // dispatch(setLaunch(null));
       dispatch(setSelectedLaunch(null));
     }, 500);
   };

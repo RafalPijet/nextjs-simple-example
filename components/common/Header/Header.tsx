@@ -20,7 +20,6 @@ import {
   getFavoritesLaunchesFromLocalStorage,
 } from '../../../redux/thunks';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
-import { loadLaunches } from '../../../redux/launches/launches-slice';
 import { useStyles, Props } from './HeaderStyle';
 import { Launch } from '../../../types/global';
 

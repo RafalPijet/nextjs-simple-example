@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
 import { Paper, Typography, Grid, Button } from '@mui/material';
 import { useAppDispatch } from '../../../redux/hooks';

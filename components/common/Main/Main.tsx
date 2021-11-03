@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import Image from 'next/image';
 import { Grid } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { setError } from '../../../redux/errors/errors-slice';
-// import { getError, resetRequest } from '../../../redux/actions/requestActions';
 import { AvailableToastVariant } from '../../../types/global';
 import { useStyles, Props } from './MainStyle';
-import image from '../../../public/background.jpg';
 import logo from '../../../public/spaceLandLogo.png';
 
 const Main: React.FC<Props> = (props) => {
