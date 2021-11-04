@@ -18,7 +18,6 @@ const ContentPage: NextPage = () => {
     (state) => state.launches.selectedLaunch
   );
   const [isRedirect, setIsRedirect] = useState<boolean>(false);
-  window.scroll(0, 0);
 
   useEffect(() => {
     if (isRedirect) {
