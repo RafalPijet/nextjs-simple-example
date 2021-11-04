@@ -28,7 +28,7 @@ const Header: React.FC<Props> = (props) => {
   const classes = useStyles();
   const location = useRouter();
   const dispatch = useAppDispatch();
-  const launches = useAppSelector((state) => state.launches.launches);
+  const launches = useAppSelector((state) => state.launchesApi.data);
   const favorites = useAppSelector((state) => state.launches.favoriteLaunches);
   const selectedLaunch = useAppSelector(
     (state) => state.launches.selectedLaunch

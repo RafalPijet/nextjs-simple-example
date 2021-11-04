@@ -6,7 +6,6 @@ import { MenuItem, Avatar, Typography, IconButton } from '@mui/material';
 import { DeleteForever } from '@mui/icons-material';
 import { setSelectedLaunch } from '../../../redux/launches/launches-slice';
 import { removeLaunchFromFavorites } from '../../../redux/thunks';
-import emptyImage from '../../../public/noImage.png';
 import { Props, useStyles } from './SelectMenuItemStyle';
 
 const SelectMenuItem: React.FC<Props> = (props) => {
@@ -80,11 +79,7 @@ const SelectMenuItem: React.FC<Props> = (props) => {
 
       <div className={classes.verticalCenter}>
         <Avatar
-          src={
-            launch.images[0].image !== undefined
-              ? launch.images[0].image
-              : emptyImage
-          }
+          src={launch.images[0].image ? launch.images[0].image : '/noImage.png'}
           alt={launch.images[0].name}
           variant="rounded"
           className={avatarClasses}

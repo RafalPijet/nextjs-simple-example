@@ -8,7 +8,7 @@ import { useStyles, Props } from './LaunchesListStyle';
 const LaunchesList: React.FC<Props> = (props) => {
   const { isPending } = props;
   const classes = useStyles();
-  const launches = useAppSelector((state) => state.launches.launches);
+  const launches = useAppSelector((state) => state.launchesApi.data);
 
   return (
     <Grid container className={classes.root}>

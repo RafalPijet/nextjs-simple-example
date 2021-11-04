@@ -6,7 +6,6 @@ import { useAppDispatch } from '../../../redux/hooks';
 import { cutText } from '../../../functions';
 import { setSelectedLaunch } from '../../../redux/launches/launches-slice';
 import { useStyles, Props } from './LaunchItemStyle';
-import noImage from '../../../public/noImage.png';
 
 const LaunchItem: React.FC<Props> = (props) => {
   const { name, date, images, description } = props.launch;
@@ -48,7 +47,7 @@ const LaunchItem: React.FC<Props> = (props) => {
                 className={classes.imageBox}
                 style={{
                   backgroundImage: `url(${
-                    images.length ? images[0].image : noImage
+                    images[0].image ? images[0].image : '/noImage.png'
                   })`,
                 }}
               ></div>
